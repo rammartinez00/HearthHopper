@@ -1,9 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import { restoreCSRF, csrfFetch } from "./csrf";
+import sessionReducer from "./session";
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
   // add reducer functions here
+  session: sessionReducer,
 });
 
 let enhancer;
@@ -20,12 +21,5 @@ if (process.env.NODE_ENV === "production") {
 const configureStore = (preloadedState) => {
   return createStore(rootReducer, preloadedState, enhancer);
 };
-
-if (process.env.NODE_ENV !== "production") {
-  restoreCSRF();
-
-  window.csrfFetch = csrfFetch;
-  window.store = store;
-}
 
 export default configureStore;
