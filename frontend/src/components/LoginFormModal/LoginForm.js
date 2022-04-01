@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import "./LoginForm.css";
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -26,25 +27,27 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      <label>
-        Username or Email
+      <div className="logInField">
         <input
           type="text"
+          placeholder="Email or Username"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
         />
-      </label>
-      <label>
-        Password
+      </div>
+      <div className="logInField">
         <input
           type="password"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-      </label>
-      <button type="submit">Log In</button>
+      </div>
+      <button type="submit" className={`button btn-gradient`}>
+        Log In
+      </button>
     </form>
   );
 }
