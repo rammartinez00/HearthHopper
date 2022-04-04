@@ -3,6 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./NewSpotForm.css";
 import { createSpot } from "../../store/spots";
+import S3FileUpload from "react-s3";
+
+const config = {
+  bucketName: "hearthhopper",
+  albumName: "hearthhopper",
+  region: "us-west-1",
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretKey,
+};
 const NewSpotForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
   console.log(sessionUser);
@@ -35,7 +44,17 @@ const NewSpotForm = () => {
     }
   };
   // dispatch
-
+  const upload = (e) => {
+    setImage(e.target.value);
+    //     S3FileUpload.uploadFile(e.target.files[0], config)
+    //       .then((data) => {
+    //         setImage(data.location);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    //   };
+  };
   return (
     <div className="formContainer">
       <img
@@ -62,11 +81,11 @@ const NewSpotForm = () => {
           onChange={(e) => setPrice(e.target.value)}
         ></input>
         <input
-          type="text"
+          type="file"
+          multiple
           placeholder="image"
-          min="1"
           value={image}
-          onChange={(e) => setImage(e.target.value)}
+          onChange={upload}
         ></input>
         <input
           type="text"

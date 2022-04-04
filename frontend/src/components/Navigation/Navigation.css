@@ -40,7 +40,6 @@ li {list-style-type: none;}
     padding: 0 10px;
     background-color: rgba(0, 0, 0,);
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
-    z-index: 1;
 }
 .navBar a {
     margin: 5px;
