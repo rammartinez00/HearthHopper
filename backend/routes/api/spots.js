@@ -17,7 +17,13 @@ const router = express.Router();
 //   asyncHandler(async (req, res) => {})
 // );
 router.get("/", async (req, res) => {
-  const spots = await db.Spot.findAll();
+  const spots = await db.Spot.findAll({
+    include: [
+      {
+        model: db.Picture,
+      },
+    ],
+  });
   return res.json(spots);
 });
 
@@ -26,8 +32,27 @@ router.post(
   requireAuth,
   asyncHandler(async (req, res) => {
     const userId = req.user.id;
-    console.log(req.body);
-    const spot = await db.Spot.create(req.body);
+    const spot = await db.Spot.build(req.body);
+    await spot.save();
+    console.log(spot);
+    const image = await db.Picture.create({
+      image: req.body.image,
+      spotId: spot.id,
+    });
+    return res.json(spot);
+  })
+);
+
+router.get(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const spot = await db.Spot.findByPk(+req.params.id, {
+      include: [
+        {
+          model: db.Picture,
+        },
+      ],
+    });
     return res.json(spot);
   })
 );
