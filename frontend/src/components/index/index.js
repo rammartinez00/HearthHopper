@@ -5,7 +5,7 @@ import "./index.css";
 const Home = () => {
   return (
     <>
-      <div className="image"></div>
+      <div className="image1"></div>
       <button className="imageBtn">
         <NavLink to="">I'm Flexible</NavLink>
       </button>

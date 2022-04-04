@@ -16,6 +16,10 @@ const router = express.Router();
 //   csrfProtection,
 //   asyncHandler(async (req, res) => {})
 // );
+router.get("/", async (req, res) => {
+  const spots = await db.Spot.findAll();
+  return res.json(spots);
+});
 
 router.post(
   "/new",

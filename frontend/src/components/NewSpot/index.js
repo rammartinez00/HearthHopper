@@ -12,10 +12,11 @@ const NewSpotForm = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
+  const [location, setLocation] = useState("");
 
-  useEffect(() => {
-    dispatch(createSpot());
-  }, [dispatch]);
+  //   useEffect(() => {
+  //     dispatch(createSpot());
+  //   }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +25,7 @@ const NewSpotForm = () => {
       description,
       price,
       image,
+      location,
       userId: sessionUser.id,
     };
 
@@ -65,6 +67,12 @@ const NewSpotForm = () => {
           min="1"
           value={image}
           onChange={(e) => setImage(e.target.value)}
+        ></input>
+        <input
+          type="text"
+          placeholder="Location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
         ></input>
         <button type="submit">Post The Spot</button>
       </form>

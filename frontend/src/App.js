@@ -6,12 +6,14 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/index/index.js";
 import NewSpotForm from "./components/NewSpot";
-
+import SpotBrowser from "./components/AllSpots";
+import { getSpots } from "./store/spots";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(getSpots());
   }, [dispatch]);
 
   return (
@@ -27,6 +29,9 @@ function App() {
           </Route>
           <Route path="/spots/new">
             <NewSpotForm />
+          </Route>
+          <Route path="/spots">
+            <SpotBrowser />
           </Route>
         </Switch>
       )}
