@@ -10,17 +10,19 @@ const csrf = require("csurf");
 const csrfProtection = csrf({ cookie: true });
 
 const router = express.Router();
-router.get(
-  "/new",
-  requireAuth,
-  csrfProtection,
-  asyncHandler(async (req, res) => {})
-);
+// router.get(
+//   "/new",
+//   requireAuth,
+//   csrfProtection,
+//   asyncHandler(async (req, res) => {})
+// );
 
 router.post(
   "/new",
   requireAuth,
   asyncHandler(async (req, res) => {
+    const userId = req.user.id;
+    console.log(req.body);
     const spot = await db.Spot.create(req.body);
     return res.json(spot);
   })
