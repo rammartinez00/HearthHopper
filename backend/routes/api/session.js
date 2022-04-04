@@ -60,5 +60,3 @@ router.get("/", restoreUser, (req, res) => {
 });
 
 module.exports = router;
-
-//n0yANhhE-P3-_bDcdVx01M0yqhE38kpoaajg

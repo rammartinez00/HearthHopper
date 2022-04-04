@@ -38,11 +38,12 @@ li {list-style-type: none;}
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0,);
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
     z-index: 1;
 }
 .navBar a {
+    margin: 5px;
     padding: 5px;
     font-family: 'Roboto', sans-serif;
     list-style: none;
@@ -83,4 +84,14 @@ li {list-style-type: none;}
 .navBar > ul {
     display: flex;
     justify-content: space-between;
+}
+
+.sessionBtns > button {
+    display: flex;
+    margin: 10px;
+}
+
+.li {
+    display: flex;
+    justify-content: space-evenly;
 }

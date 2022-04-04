@@ -1,0 +1,30 @@
+.newspotform {
+   display: flex;
+   background-color: rgb(41, 108, 24);
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    width: 40rem;
+    height: 20rem;
+    position: relative;
+    top: 15rem;
+}
+.image {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    top: 0;
+    left: 25;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 46px;
+    left: 0;
+}

@@ -1,6 +1,7 @@
 "use strict";
 const { Validator } = require("sequelize");
 const bcrypt = require("bcryptjs");
+const { user } = require("pg/lib/defaults");
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -90,7 +91,23 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   User.associate = function (models) {
-    // associations can be defined here
+    User.hasMany(models.Spot, {
+      foreignKey: "userId",
+    });
+    User.hasMany(models.Amenity, {
+      foreignKey: "userId",
+    });
+    User.hasMany(models.SpotFav, {
+      foreignKey: "userId",
+    });
+
+    User.hasMany(models.SpotReview, {
+      foreignKey: "userId",
+    });
+
+    User.hasMany(models.SpotBooking, {
+      foreignKey: "userId",
+    });
   };
 
   return User;
