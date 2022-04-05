@@ -34,6 +34,13 @@ const updateOne = (spot) => {
   };
 };
 
+const deleteSpot = (id) => {
+  return {
+    type: REMOVE_SPOT,
+    payload: id,
+  };
+};
+
 export const getSpots = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots");
   if (response.ok) {
@@ -72,6 +79,14 @@ export const updateSpot = (spot) => async (dispatch) => {
   return response;
 };
 
+export const deleteOneSpot = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/spots/${id}/delete`, {
+    method: "DELETE",
+  });
+  dispatch(deleteSpot(id));
+  return response;
+};
+
 const spotReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
@@ -92,7 +107,9 @@ const spotReducer = (state = {}, action) => {
       newState[action.payload.id] = action.payload;
       return newState;
     case REMOVE_SPOT:
-      return {};
+      newState = Object.assign({}, state);
+      delete newState[action.payload];
+      return newState;
     default:
       return state;
   }
