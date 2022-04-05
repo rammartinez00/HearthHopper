@@ -16,9 +16,13 @@ const SpotBrowser = () => {
       {spotsArr.map((spot) => (
         <div className="spot" key={spot.id}>
           <div className="spot-image">
-            {spot.Pictures.map((picture) => (
-              <img src={picture.image} alt="spot" key={picture.id} />
-            ))}
+            <NavLink className="spot-image" to={`/spots/${spot.id}`}>
+              <img
+                src={spot.Pictures[0].image}
+                alt="spot"
+                key={spot.Pictures[0].id}
+              />
+            </NavLink>
           </div>
           <div className="spot-info">
             <h3>{spot.name}</h3>
@@ -28,7 +32,6 @@ const SpotBrowser = () => {
           </div>
           {sessionUser.id === spot.userId && (
             <div>
-              <EditSpotForm spot={spot} />
               <button>
                 <NavLink to={`/spots/${spot.id}/edit`}>Edit</NavLink>
               </button>

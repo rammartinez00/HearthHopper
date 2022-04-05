@@ -34,7 +34,6 @@ router.post(
     const userId = req.user.id;
     const spot = await db.Spot.build(req.body);
     await spot.save();
-    console.log(spot);
     const image = await db.Picture.create({
       image: req.body.image,
       spotId: spot.id,
@@ -58,8 +57,19 @@ router.get(
 );
 
 router.put("/:id/edit", async (req, res) => {
-  const spot = await db.Spot.findByPk(+req.params.id);
+  const id = req.params.id;
+  const spot = await db.Spot.findByPk(+id, {
+    include: [
+      {
+        model: db.Picture,
+      },
+    ],
+  });
   await spot.update(req.body);
+  const image = await db.Picture.create({
+    image: req.body.image,
+    spotId: spot.id,
+  });
   return res.json(spot);
 });
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createSpot } from "../../store/spots";
+import { useHistory, useParams } from "react-router-dom";
+import { createSpot, updateSpot } from "../../store/spots";
 import S3FileUpload from "react-s3";
 
 const config = {
@@ -11,22 +11,29 @@ const config = {
   accessKeyId: process.env.accessKeyId,
   secretAccessKey: process.env.secretKey,
 };
-const EditSpotForm = ({ spot }) => {
+const EditSpotForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
-
+  const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const [name, setName] = useState(spot.name);
-  const [description, setDescription] = useState(spot.description);
-  const [price, setPrice] = useState(spot.price);
-  const [image, setImage] = useState(spot.image);
-  const [location, setLocation] = useState(spot.location);
-
+  const spots = useSelector((state) => state.spots);
+  //   console.log(spots);
+  const spotsArr = Object.values(spots);
+  const spot = spotsArr.filter((spot) => spot.id === +id)[0];
+  //   console.log(id);
+  const [name, setName] = useState(spot?.name);
+  const [description, setDescription] = useState(spot?.description);
+  const [price, setPrice] = useState(spot?.price);
+  const [image, setImage] = useState(spot?.image);
+  const [location, setLocation] = useState(spot?.location);
+  //   console.log(spotsArr);
+  //   console.log(spot);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const spot = {
-      ...spot,
+    const changedSpot = {
+      //   ...spot,
+      id: spot.id,
       name,
       description,
       price,
@@ -34,8 +41,8 @@ const EditSpotForm = ({ spot }) => {
       location,
       userId: sessionUser.id,
     };
-
-    let createdSpot = await dispatch(createSpot(spot));
+    console.log(changedSpot);
+    let createdSpot = await dispatch(updateSpot(changedSpot));
     if (createdSpot) {
       history.push(`/spots`);
     }
