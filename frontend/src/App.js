@@ -8,6 +8,7 @@ import Home from "./components/index/index.js";
 import NewSpotForm from "./components/NewSpot";
 import SpotBrowser from "./components/AllSpots";
 import { getSpots } from "./store/spots";
+import EditSpotForm from "./components/EditSpot";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/spots">
             <SpotBrowser />
+          </Route>
+          <Route path="/spots/:id/edit">
+            <EditSpotForm />
           </Route>
         </Switch>
       )}

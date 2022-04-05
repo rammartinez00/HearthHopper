@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import "./NewSpotForm.css";
 import { createSpot } from "../../store/spots";
 import S3FileUpload from "react-s3";
 
@@ -12,24 +11,22 @@ const config = {
   accessKeyId: process.env.accessKeyId,
   secretAccessKey: process.env.secretKey,
 };
-const NewSpotForm = () => {
+const EditSpotForm = ({ spot }) => {
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(sessionUser);
+
   const dispatch = useDispatch();
   const history = useHistory();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
-  const [location, setLocation] = useState("");
 
-  //   useEffect(() => {
-  //     dispatch(createSpot());
-  //   }, [dispatch]);
+  const [name, setName] = useState(spot.name);
+  const [description, setDescription] = useState(spot.description);
+  const [price, setPrice] = useState(spot.price);
+  const [image, setImage] = useState(spot.image);
+  const [location, setLocation] = useState(spot.location);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const spot = {
+      ...spot,
       name,
       description,
       price,
@@ -40,7 +37,7 @@ const NewSpotForm = () => {
 
     let createdSpot = await dispatch(createSpot(spot));
     if (createdSpot) {
-      history.push(`/`);
+      history.push(`/spots`);
     }
   };
   // dispatch
@@ -99,4 +96,4 @@ const NewSpotForm = () => {
   );
 };
 
-export default NewSpotForm;
+export default EditSpotForm;

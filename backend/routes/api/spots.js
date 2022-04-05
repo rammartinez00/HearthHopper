@@ -57,4 +57,10 @@ router.get(
   })
 );
 
+router.put("/:id/edit", async (req, res) => {
+  const spot = await db.Spot.findByPk(+req.params.id);
+  await spot.update(req.body);
+  return res.json(spot);
+});
+
 module.exports = router;
