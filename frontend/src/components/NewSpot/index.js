@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import "./NewSpotForm.css";
 import { createSpot } from "../../store/spots";
 import S3FileUpload from "react-s3";
+import LoadingScreen from "../viewOneSpot/Loading";
 
 const config = {
   bucketName: "hearthhopper",
@@ -22,10 +23,7 @@ const NewSpotForm = () => {
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
-
-  //   useEffect(() => {
-  //     dispatch(createSpot());
-  //   }, [dispatch]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +38,10 @@ const NewSpotForm = () => {
 
     let createdSpot = await dispatch(createSpot(spot));
     if (createdSpot) {
-      history.push(`/spots/${createdSpot.id}`);
+      setIsLoading(true);
+      setTimeout(() => {
+        history.push(`/spots/${createdSpot.id}`);
+      }, 8000);
     }
   };
   // dispatch
@@ -56,46 +57,52 @@ const NewSpotForm = () => {
     //   };
   };
   return (
-    <div className="formContainer">
-      <img
-        className="image"
-        src="https://news.airbnb.com/wp-content/uploads/sites/4/2019/06/PJM020719Q202_Luxe_WanakaNZ_LivingRoom_0264-LightOn_R1.jpg?fit=2500%2C1666"
-      ></img>
-      <form className="newspotform" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Spot Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        ></input>
-        <textarea
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-        <input
-          type="number"
-          placeholder="Price Per Night"
-          min="1"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        ></input>
-        <input
-          type="text"
-          multiple
-          placeholder="image"
-          value={image}
-          onChange={upload}
-        ></input>
-        <input
-          type="text"
-          placeholder="Location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        ></input>
-        <button type="submit">Post The Spot</button>
-      </form>
-    </div>
+    <>
+      {isLoading === false ? (
+        <div className="formContainer">
+          <img
+            className="image"
+            src="https://news.airbnb.com/wp-content/uploads/sites/4/2019/06/PJM020719Q202_Luxe_WanakaNZ_LivingRoom_0264-LightOn_R1.jpg?fit=2500%2C1666"
+          ></img>
+          <form className="newspotform" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Spot Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            ></input>
+            <textarea
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
+            <input
+              type="number"
+              placeholder="Price Per Night"
+              min="1"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            ></input>
+            <input
+              type="text"
+              multiple
+              placeholder="image"
+              value={image}
+              onChange={upload}
+            ></input>
+            <input
+              type="text"
+              placeholder="Location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            ></input>
+            <button type="submit">Post The Spot</button>
+          </form>
+        </div>
+      ) : (
+        <LoadingScreen />
+      )}
+    </>
   );
 };
 

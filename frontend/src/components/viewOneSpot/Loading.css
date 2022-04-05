@@ -1,0 +1,28 @@
+.loading{
+    height:180px;
+    width:180px;
+    background:#fff;
+    border-radius:50%;
+    margin:auto;
+    margin-top:40px;
+  }
+  .loading::after{
+    content:' ';
+    display:block;
+    height:200px;
+    width:200px;
+    top:-10px;
+    left:-10px;
+  
+    background-image:linear-gradient(to left,#2196F3 50%,#fff 0);
+    position:relative;
+    z-index:-1;
+    border-radius:50%;
+    transform:rotate(0turn);
+    animation:anim 1s infinite ease-in-out;
+  }
+  @keyframes anim{
+    100%{
+      transform:rotate(1turn);
+    }  
+  }
