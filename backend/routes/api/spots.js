@@ -73,4 +73,11 @@ router.put("/:id/edit", async (req, res) => {
   return res.json(spot);
 });
 
+router.delete("/:id/delete", async (req, res) => {
+  const id = req.params.id;
+  const spot = await db.Spot.findByPk(+id);
+  await spot.destroy({ options: { cascade: true } });
+  return res.json(spot.id);
+});
+
 module.exports = router;

@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
   Picture.associate = function (models) {
     Picture.belongsTo(models.Spot, {
       foreignKey: "spotId",
-      onDelete: "CASCADE",
     });
   };
   return Picture;

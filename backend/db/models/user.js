@@ -93,6 +93,8 @@ module.exports = (sequelize, DataTypes) => {
   User.associate = function (models) {
     User.hasMany(models.Spot, {
       foreignKey: "userId",
+      hooks: true,
+      onDelete: "CASCADE",
     });
     User.hasMany(models.Amenity, {
       foreignKey: "userId",
