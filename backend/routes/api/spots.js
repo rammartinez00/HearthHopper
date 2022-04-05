@@ -32,8 +32,7 @@ router.post(
   requireAuth,
   asyncHandler(async (req, res) => {
     const userId = req.user.id;
-    const spot = await db.Spot.build(req.body);
-    await spot.save();
+    const spot = await db.Spot.create(req.body);
     const image = await db.Picture.create({
       image: req.body.image,
       spotId: spot.id,

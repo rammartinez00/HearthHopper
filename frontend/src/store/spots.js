@@ -64,8 +64,8 @@ export const createSpot = (spot) => async (dispatch) => {
     body: JSON.stringify(spot),
   });
   const data = await response.json();
-  dispatch(setSpot(data.spot));
-  return response;
+  dispatch(setSpot(data));
+  return data;
 };
 
 export const updateSpot = (spot) => async (dispatch) => {

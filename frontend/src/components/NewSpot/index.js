@@ -40,7 +40,7 @@ const NewSpotForm = () => {
 
     let createdSpot = await dispatch(createSpot(spot));
     if (createdSpot) {
-      history.push(`/`);
+      history.push(`/spots/${createdSpot.id}`);
     }
   };
   // dispatch

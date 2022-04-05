@@ -6,36 +6,38 @@ import EditSpotForm from "../EditSpot";
 import "./AllSpots.css";
 const SpotBrowser = () => {
   const dispatch = useDispatch();
+
   const spots = useSelector((state) => state.spots);
   const spotsArr = Object.values(spots);
   const sessionUser = useSelector((state) => state.session.user);
+  console.log(spotsArr);
 
   if (!spots) return null;
   return (
     <div className="spotContainer">
       {spotsArr.map((spot) => (
-        <div className="spot" key={spot.id}>
+        <div className="spot" key={spot?.id}>
           <div className="spot-image">
-            <NavLink className="spot-image" to={`/spots/${spot.id}`}>
+            <NavLink className="spot-image" to={`/spots/${spot?.id}`}>
               <img
-                src={spot.Pictures[0].image}
+                src={spot?.Pictures[0].image}
                 alt="spot"
-                key={spot.Pictures[0].id}
+                key={spot?.Pictures[0].id}
               />
             </NavLink>
           </div>
           <div className="spot-info">
-            <h3>{spot.name}</h3>
-            <p>{spot.description}</p>
-            <p>${spot.price} per night</p>
-            <p>{spot.location}</p>
+            <h3>{spot?.name}</h3>
+            <p>{spot?.description}</p>
+            <p>${spot?.price} per night</p>
+            <p>{spot?.location}</p>
           </div>
-          {sessionUser.id === spot.userId && (
+          {sessionUser.id === spot?.userId && (
             <div>
               <button>
-                <NavLink to={`/spots/${spot.id}/edit`}>Edit</NavLink>
+                <NavLink to={`/spots/${spot?.id}/edit`}>Edit</NavLink>
               </button>
-              <button onClick={() => dispatch(deleteOneSpot(spot.id))}>
+              <button onClick={() => dispatch(deleteOneSpot(spot?.id))}>
                 Delete
               </button>
             </div>
