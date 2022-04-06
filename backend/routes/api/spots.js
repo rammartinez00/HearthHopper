@@ -37,7 +37,15 @@ router.post(
       image: req.body.image,
       spotId: spot.id,
     });
-    return res.json(spot);
+
+    const singleSpot = await db.Spot.findByPk(spot.id, {
+      include: [
+        {
+          model: db.Picture,
+        },
+      ],
+    });
+    return res.json(singleSpot);
   })
 );
 
