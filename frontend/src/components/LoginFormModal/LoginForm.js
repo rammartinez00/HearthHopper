@@ -48,6 +48,13 @@ function LoginForm() {
       <button type="submit" className={`button btn-gradient`}>
         Log In
       </button>
+      <button
+        onClick={() => {
+          setCredential("demo@user.io");
+        }}
+      >
+        Demo Login
+      </button>
     </form>
   );
 }

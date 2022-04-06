@@ -23,7 +23,7 @@ const EditSpotForm = () => {
   const [name, setName] = useState(spot?.name);
   const [description, setDescription] = useState(spot?.description);
   const [price, setPrice] = useState(spot?.price);
-  const [image, setImage] = useState(spot?.image);
+  const [image, setImage] = useState(spot?.Pictures[0].image);
   const [location, setLocation] = useState(spot?.location);
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
