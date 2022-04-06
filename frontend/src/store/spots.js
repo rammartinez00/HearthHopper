@@ -99,9 +99,7 @@ const spotReducer = (state = {}, action) => {
     case LOAD_ONE:
       return { ...state, [action.payload.id]: action.payload };
     case SET_SPOT:
-      newState = Object.assign({}, state);
-      newState.spot = action.payload;
-      return newState;
+      return { ...state, [action.payload.id]: action.payload };
     case UPDATE_SPOT:
       newState = Object.assign({}, state);
       newState[action.payload.id] = action.payload;

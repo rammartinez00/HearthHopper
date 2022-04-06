@@ -13,7 +13,7 @@ const SpotDetail = () => {
   const spot = spots[id];
   console.log(spot);
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 6000);
+    setIsLoading(false);
   }, []);
   if (!spot) return null;
 

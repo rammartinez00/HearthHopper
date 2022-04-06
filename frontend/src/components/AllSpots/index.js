@@ -20,9 +20,9 @@ const SpotBrowser = () => {
           <div className="spot-image">
             <NavLink className="spot-image" to={`/spots/${spot?.id}`}>
               <img
-                src={spot?.Pictures[0].image}
+                src={spot?.Pictures[0]?.image}
                 alt="spot"
-                key={spot?.Pictures[0].id}
+                key={spot?.Pictures[0]?.id}
               />
             </NavLink>
           </div>

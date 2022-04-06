@@ -18,21 +18,38 @@ const EditSpotForm = () => {
   const history = useHistory();
 
   const spots = useSelector((state) => state.spots);
-  //   console.log(spots);
   const spotsArr = Object.values(spots);
   const spot = spotsArr.filter((spot) => spot.id === +id)[0];
-  //   console.log(id);
   const [name, setName] = useState(spot?.name);
   const [description, setDescription] = useState(spot?.description);
   const [price, setPrice] = useState(spot?.price);
   const [image, setImage] = useState(spot?.image);
   const [location, setLocation] = useState(spot?.location);
-  //   console.log(spotsArr);
-  //   console.log(spot);
+  const [validationErrors, setValidationErrors] = useState([]);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  useEffect(() => {
+    const errors = [];
+    if (name.length < 1) {
+      errors.push("Name is required");
+    }
+    if (description.length < 1) {
+      errors.push("Description is required");
+    }
+    if (price.length < 1) {
+      errors.push("Price is required");
+    }
+    if (location.length < 1) {
+      errors.push("Location is required");
+    }
+    setValidationErrors(errors);
+  }, [name, description, price, location]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setHasSubmitted(true);
+
     const changedSpot = {
-      //   ...spot,
       id: spot.id,
       name,
       description,
@@ -41,8 +58,15 @@ const EditSpotForm = () => {
       location,
       userId: sessionUser.id,
     };
-    console.log(changedSpot);
+
     let createdSpot = await dispatch(updateSpot(changedSpot));
+    setName("");
+    setDescription("");
+    setPrice("");
+    setImage("");
+    setLocation("");
+    setHasSubmitted(false);
+    setValidationErrors([]);
     if (createdSpot) {
       history.push(`/spots`);
     }
@@ -66,6 +90,12 @@ const EditSpotForm = () => {
         src="https://news.airbnb.com/wp-content/uploads/sites/4/2019/06/PJM020719Q202_Luxe_WanakaNZ_LivingRoom_0264-LightOn_R1.jpg?fit=2500%2C1666"
       ></img>
       <form className="newspotform" onSubmit={handleSubmit}>
+        <h2>Post Your Spot!</h2>
+        <ul className="errors">
+          {validationErrors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
         <input
           type="text"
           placeholder="Spot Name"
@@ -97,7 +127,9 @@ const EditSpotForm = () => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         ></input>
-        <button type="submit">Post The Spot</button>
+        <button type="submit" disabled={validationErrors.length > 0}>
+          Post The Spot
+        </button>
       </form>
     </div>
   );
