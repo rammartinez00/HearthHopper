@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Route, useParams } from "react-router-dom";
-import { getOneSpot } from "../../store/spots";
+import { NavLink, Route, useParams, useHistory } from "react-router-dom";
+import { getOneSpot, deleteOneSpot } from "../../store/spots";
+import NewBookingForm from "../Bookings/NewBooking";
 import EditSpotForm from "../EditSpot";
 import LoadingScreen from "./Loading";
 import "./OneSpot.css";
 const SpotDetail = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const spots = useSelector((state) => state.spots);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const spot = spots[id];
-  console.log(spot);
+  const sessionUser = useSelector((state) => state.session.user);
+
   useEffect(() => {
     setIsLoading(false);
   }, []);
@@ -44,6 +47,22 @@ const SpotDetail = () => {
             <p>${spot.price} per night</p>
             <p>{spot.location}</p>
           </div>
+          <NewBookingForm />
+          {sessionUser.id === spot?.userId && (
+            <div>
+              <button>
+                <NavLink to={`/spots/${spot?.id}/edit`}>Edit</NavLink>
+              </button>
+              <button
+                onClick={() => {
+                  dispatch(deleteOneSpot(spot?.id));
+                  history.push("/spots");
+                }}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </div>
       ) : (
         <LoadingScreen />

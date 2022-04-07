@@ -10,7 +10,6 @@ const SpotBrowser = () => {
   const spots = useSelector((state) => state.spots);
   const spotsArr = Object.values(spots);
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(spotsArr);
 
   if (!spots) return null;
   return (

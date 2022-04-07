@@ -6,9 +6,9 @@ body {
   height: 250px;
   overflow: hidden;
   position: relative;
-  
   margin: 20px auto;
 }
+
 #images img {
   width: 400px;
   height: 250px;
