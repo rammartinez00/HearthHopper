@@ -20,7 +20,7 @@ const NewSpotForm = () => {
   const history = useHistory();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
   const [location, setLocation] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +35,7 @@ const NewSpotForm = () => {
     if (description.length < 1) {
       errors.push("Description is required");
     }
+
     if (price.length < 1) {
       errors.push("Price is required");
     }

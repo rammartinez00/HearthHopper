@@ -1,96 +1,109 @@
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-li {list-style-type: none;}
+li {
+  list-style-type: none;
+}
 
 .userButton {
-    font-size: 20px;
-    background-color: white;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
-    transition: box-shadow .3s;
-    border-radius:10px;
-    background: #fff;
-    float: left;
+  font-size: 20px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
+  transition: box-shadow 0.3s;
+  border-radius: 10px;
+  background: #fff;
+  float: left;
 }
 .userButton:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
-#root{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .navBar {
-    width:100%;
-    color: rgb(0, 0, 0);
-    position: absolute;
-    top:0;
-    left:0;
-    right: 0;
-    margin: 0;
-    border-bottom: 2px solid black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
-    background-color: rgba(0, 0, 0,);
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
+  width: 100%;
+  /* color: rgb(0, 0, 0); */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  background-color: rgba(0, 0, 0);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
 }
 .navBar a {
-    margin: 5px;
-    padding: 5px;
-    font-family: 'Roboto', sans-serif;
-    list-style: none;
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
-    transition: box-shadow .3s;
-    border-radius:5px;
-    background: #fff;
-    float: left;
+  margin: 5px;
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
+  list-style: none;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
+  transition: box-shadow 0.3s;
+  border-radius: 5px;
+  background: #fff;
+  float: left;
 }
 
 .navBar a:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2);
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .navBar button {
-    font-size: 20px;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
-    transition: box-shadow .3s;
-    border-radius:5px;
-    background: #fff;
-    float: left;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.75);
+  transition: box-shadow 0.3s;
+  border-radius: 5px;
+  background: #fff;
+  float: left;
 }
 
 .navBar button:hover {
-    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .navBar > ul {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .sessionBtns > button {
-    display: flex;
-    margin: 10px;
+  display: flex;
+  margin: 10px;
 }
 
 .li {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
+}
+.profileDropdown {
+  padding: 10px;
+  font-size: small;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 30px;
+  z-index: 5;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
 }

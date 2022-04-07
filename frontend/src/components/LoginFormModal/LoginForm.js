@@ -21,7 +21,7 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="login" onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
           <li key={idx}>{error}</li>
@@ -51,6 +51,7 @@ function LoginForm() {
       <button
         onClick={() => {
           setCredential("demo@user.io");
+          setPassword("password");
         }}
       >
         Demo Login

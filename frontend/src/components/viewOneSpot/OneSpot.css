@@ -1,12 +1,13 @@
 body {
-    text-align: center;
-  }
+  text-align: center;
+}
 #images {
   width: 400px;
   height: 250px;
   overflow: hidden;
   position: relative;
   margin: 20px auto;
+  border-radius: 10px;
 }
 
 #images img {
@@ -17,10 +18,10 @@ body {
   left: -400px;
   z-index: 1;
   opacity: 0;
-  transition: all linear 500ms;
-  -o-transition: all linear 500ms;
-  -moz-transition: all linear 500ms;
-  -webkit-transition: all linear 500ms;
+  transition: all linear 00ms;
+  -o-transition: all linear 00ms;
+  -moz-transition: all linear 00ms;
+  -webkit-transition: all linear 00ms;
 }
 
 #images img:target {
@@ -34,27 +35,40 @@ body {
 }
 #slider a {
   text-decoration: none;
-  background: #E3F1FA;
-  border: 1px solid #C6E4F2;
+  background: #e3f1fa;
+  border: 1px solid #c6e4f2;
   padding: 4px 6px;
   color: #222;
   position: relative;
+  top: 226px;
   z-index: 2;
 }
 #slider a:hover {
-  background: #C6E4F2;
+  background: #c6e4f2;
   position: relative;
   z-index: 2;
-  
 }
 .spotCont {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-color: aqua; */
-    position: relative;
-    top:100px;
-    border-radius: 10px;
-    border: 1px solid #C6E4F2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: aqua; */
+  position: relative;
+  top: 100px;
+  border-radius: 10px;
+  border: 1px solid #c6e4f2;
+  height: 1000px;
+  width: 100%;
+}
+.bookingCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #c6e4f2;
+  background-color: green;
+  height: 400px;
+  width: 100%;
 }

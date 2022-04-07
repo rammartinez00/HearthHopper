@@ -26,7 +26,7 @@ const deleteBooking = (id) => {
 };
 
 export const createBooking = (booking) => async (dispatch) => {
-  const response = await csrfFetch("/api/bookings", {
+  const response = await csrfFetch("/api/bookings/new", {
     method: "POST",
     body: JSON.stringify(booking),
   });

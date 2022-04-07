@@ -34,9 +34,9 @@ const SpotDetail = () => {
               />
             ))}
             <div id="slider">
-              {spot.Pictures.map((pic) => (
+              {spot.Pictures.map((pic, index) => (
                 <a key={pic.id} href={`#image${pic.id}`}>
-                  {pic.id}
+                  {index + 1}
                 </a>
               ))}
             </div>
@@ -47,9 +47,9 @@ const SpotDetail = () => {
             <p>${spot.price} per night</p>
             <p>{spot.location}</p>
           </div>
-          <NewBookingForm />
+          <NewBookingForm spot={spot} />
           {sessionUser.id === spot?.userId && (
-            <div>
+            <div className="ownerControls">
               <button>
                 <NavLink to={`/spots/${spot?.id}/edit`}>Edit</NavLink>
               </button>

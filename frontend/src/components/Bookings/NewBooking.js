@@ -6,12 +6,13 @@ import { createBooking } from "../../store/bookings";
 import S3FileUpload from "react-s3";
 import LoadingScreen from "../viewOneSpot/Loading";
 
-const NewBookingForm = () => {
+const NewBookingForm = ({ spot }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const { id } = useParams();
+  console.log(id);
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -44,6 +45,7 @@ const NewBookingForm = () => {
     let createdBooking;
 
     createdBooking = await dispatch(createBooking(booking));
+
     setStartDate("");
     setEndDate("");
     setHasSubmitted(false);
@@ -53,7 +55,7 @@ const NewBookingForm = () => {
   };
 
   return (
-    <div>
+    <div className="bookingCont">
       <form onSubmit={handleSubmit}>
         <h2>Book Here!</h2>
         <ul className="errors">
@@ -81,8 +83,9 @@ const NewBookingForm = () => {
             onChange={(e) => setEndDate(e.target.value)}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Book Now</button>
       </form>
+      <h2>Total Price$ {spot}</h2>
     </div>
   );
 };

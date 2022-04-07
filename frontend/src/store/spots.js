@@ -74,7 +74,7 @@ export const updateSpot = (spot) => async (dispatch) => {
     body: JSON.stringify(spot),
   });
   const data = await response.json();
-  console.log(data);
+
   dispatch(updateOne(data));
   return response;
 };
