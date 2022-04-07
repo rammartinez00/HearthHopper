@@ -50,8 +50,12 @@ function LoginForm() {
       </button>
       <button
         onClick={() => {
-          setCredential("demo@user.io");
-          setPassword("password");
+          dispatch(
+            sessionActions.login({
+              credential: "demo@user.io",
+              password: "password",
+            })
+          );
         }}
       >
         Demo Login

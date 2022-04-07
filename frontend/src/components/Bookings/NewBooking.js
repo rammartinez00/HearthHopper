@@ -14,11 +14,49 @@ const NewBookingForm = ({ spot }) => {
   const { id } = useParams();
   console.log(id);
 
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const today = new Date().toDateString();
+  console.log(today, "***********");
+
+  const [startDate, setStartDate] = useState("2022-04-15");
+  const [endDate, setEndDate] = useState("2022-04-15");
 
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  console.log(startDate, endDate, "^^^^^^^^^^^^");
+  const newPrice = parseInt(spot.price);
+
+  const startArr = startDate.split("-");
+  const startYear = startArr[0];
+  const startMonth = startArr[1];
+  const startDay = startArr[2];
+
+  const endArr = endDate.split("-");
+  const endYear = endArr[0];
+  const endMonth = endArr[1];
+  const endDay = endArr[2];
+
+  const date1 = new Date(+startYear, +startMonth, +startDay);
+
+  // creating the date 2 with sample input date.
+  const date2 = new Date(+endYear, +endMonth, +endDay);
+
+  // getting milliseconds for both dates
+  const date1InMs = date1.getTime();
+  const date2InMs = date2.getTime();
+
+  // getting the diff between two dates.
+  let timeDiff = 0;
+  if (date1InMs > date2InMs) {
+    timeDiff = date1InMs - date2InMs;
+  } else {
+    timeDiff = date2InMs - date1InMs;
+  }
+
+  // converting diff into days
+  const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+
+  const totalPrice = daysDiff * newPrice;
 
   useEffect(() => {
     const errors = [];
@@ -28,8 +66,11 @@ const NewBookingForm = ({ spot }) => {
     if (endDate.length < 1) {
       errors.push("End Date is required");
     }
+    if (daysDiff < 0) {
+      errors.push("End Date must be after Start Date");
+    }
     setValidationErrors(errors);
-  }, [startDate, endDate]);
+  }, [startDate, endDate, daysDiff]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,7 +126,7 @@ const NewBookingForm = ({ spot }) => {
         </div>
         <button type="submit">Book Now</button>
       </form>
-      <h2>Total Price$ {spot}</h2>
+      <h2>Total Price$ {totalPrice}</h2>
     </div>
   );
 };
