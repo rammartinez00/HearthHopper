@@ -72,3 +72,8 @@ body {
   height: 400px;
   width: 100%;
 }
+
+.review {
+  border: 1px solid #c6e4f2;
+  width: 400px;
+}

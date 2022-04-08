@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { postReview } from "../../store/reviews";
+import { getOneSpot } from "../../store/spots";
 
 const NewReview = ({ spot }) => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -11,9 +12,13 @@ const NewReview = ({ spot }) => {
   const history = useHistory();
 
   const [comment, setComment] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(1);
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  useEffect(() => {
+    dispatch(getOneSpot(id));
+  }, [hasSubmitted]);
 
   useEffect(() => {
     const errors = [];

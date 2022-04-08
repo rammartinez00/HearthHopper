@@ -45,7 +45,7 @@ export const getSpots = () => async (dispatch) => {
   const response = await csrfFetch("/api/spots");
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
+
     dispatch(load(data));
   }
 };
@@ -54,6 +54,7 @@ export const getOneSpot = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/spots/${id}`);
   if (response.ok) {
     const data = await response.json();
+    console.log(data);
     dispatch(loadOne(data));
   }
 };

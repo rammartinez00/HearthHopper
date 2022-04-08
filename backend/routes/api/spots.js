@@ -10,12 +10,7 @@ const csrf = require("csurf");
 const csrfProtection = csrf({ cookie: true });
 
 const router = express.Router();
-// router.get(
-//   "/new",
-//   requireAuth,
-//   csrfProtection,
-//   asyncHandler(async (req, res) => {})
-// );
+
 router.get("/", async (req, res) => {
   const spots = await db.Spot.findAll({
     include: [
@@ -53,14 +48,7 @@ router.get(
   "/:id",
   asyncHandler(async (req, res) => {
     const spot = await db.Spot.findByPk(+req.params.id, {
-      include: [
-        {
-          model: db.Picture,
-        },
-        {
-          model: db.SpotReview,
-        },
-      ],
+      include: [db.Picture, db.SpotReview],
     });
     console.log(spot);
     return res.json(spot);

@@ -26,8 +26,14 @@ router.patch(
   requireAuth,
   csrfProtection,
   asyncHandler(async (req, res) => {
-    const review = await db.SpotReview.findByPk(req.params.id);
-    await review.update(req.body);
+    const { comment, rating } = req.body;
+    const review = await db.SpotReview.findByPk(+req.body.id);
+    console.log(review, "BEFORE");
+    await review.update({
+      rating,
+      comment,
+    });
+    console.log(review, "AFTER");
     res.json(review);
   })
 );
