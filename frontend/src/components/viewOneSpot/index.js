@@ -15,6 +15,7 @@ const SpotDetail = () => {
   const { id } = useParams();
   const spot = spots[id];
   const sessionUser = useSelector((state) => state.session.user);
+  console.log(spot);
 
   useEffect(() => {
     setIsLoading(false);
@@ -48,19 +49,23 @@ const SpotDetail = () => {
             <p>${spot.price} per night</p>
             <p>{spot.location}</p>
           </div>
-          <NewBookingForm spot={spot} />
+          {/* <NewBookingForm spot={spot} /> */}
           <div className="reviews">
             <h3>Reviews</h3>
             <NewReview spot={spot} />
           </div>
           <div className="reviewList">
-            {spot?.SpotReviews?.map((review) => (
-              <div className="review" key={review?.id}>
-                <p>{review?.rating}</p>
-                <p>{review?.comment}</p>
-                {/* <p>{review?.user.firstName}</p> */}
-              </div>
-            ))}
+            {/* {spot.SpotReviews.map(
+              (review) => (
+                console.log(review),
+                (
+                  <div className="review" key={review?.id}>
+                    <p>{review?.rating}</p>
+                    <p>{review?.comment}</p>
+                  </div>
+                )
+              )
+            )} */}
           </div>
           {sessionUser.id === spot?.userId && (
             <div className="ownerControls">

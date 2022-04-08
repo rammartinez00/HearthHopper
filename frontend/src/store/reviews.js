@@ -64,8 +64,16 @@ const removeReview = (id) => async (dispatch) => {
 const reviewReducer = (state = [], action) => {
   let newState;
   switch (action.type) {
+    case LOAD:
+      const allReviews = {};
+      action.payload.forEach((review) => {
+        allReviews[review.id] = review;
+      });
+      return allReviews;
     case SET_REVIEW:
-      return { ...state, [action.payload.id]: action.payload };
+      newState = Object.assign({}, state);
+      newState[action.payload.id] = action.payload;
+      return newState;
     case EDIT_REVIEW:
       newState = Object.assign({}, state);
       newState[action.payload.id] = action.payload;
@@ -74,13 +82,8 @@ const reviewReducer = (state = [], action) => {
       newState = Object.assign({}, state);
       delete newState[action.payload];
       return newState;
-    case LOAD:
-      const allReviews = {};
-      action.payload.forEach((review) => {
-        allReviews[review.id] = review;
-      });
-      return allReviews;
     default:
       return state;
   }
 };
+export default reviewReducer;

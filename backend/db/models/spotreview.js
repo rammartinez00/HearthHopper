@@ -13,11 +13,9 @@ module.exports = (sequelize, DataTypes) => {
   SpotReview.associate = function (models) {
     SpotReview.belongsTo(models.User, {
       foreignKey: "userId",
-      onDelete: "CASCADE",
     });
     SpotReview.belongsTo(models.Spot, {
       foreignKey: "spotId",
-      onDelete: "CASCADE",
     });
   };
   return SpotReview;

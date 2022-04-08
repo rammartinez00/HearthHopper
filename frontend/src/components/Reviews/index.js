@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { postReview } from "../../store/reviews";
 
-const NewReview = () => {
+const NewReview = ({ spot }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
-  const spots = useSelector((state) => state.spots);
-  const spot = spots[id];
 
   const dispatch = useDispatch();
   const history = useHistory();

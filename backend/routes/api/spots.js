@@ -56,10 +56,13 @@ router.get(
       include: [
         {
           model: db.Picture,
+        },
+        {
           model: db.SpotReview,
         },
       ],
     });
+    console.log(spot);
     return res.json(spot);
   })
 );
