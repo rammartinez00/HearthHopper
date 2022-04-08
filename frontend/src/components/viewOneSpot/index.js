@@ -76,7 +76,7 @@ const SpotDetail = () => {
                   <button
                     onClick={async () => {
                       await dispatch(removeReview(review.id));
-                      setHasDeleted(true);
+                      setHasDeleted(!hasDeleted);
                     }}
                   >
                     Delete
