@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams, useHistory } from "react-router-dom";
 import { getOneSpot, deleteOneSpot } from "../../store/spots";
 import NewBookingForm from "../Bookings/NewBooking";
+import NewReview from "../Reviews/index";
 import EditSpotForm from "../EditSpot";
 import LoadingScreen from "./Loading";
 import "./OneSpot.css";
@@ -48,6 +49,19 @@ const SpotDetail = () => {
             <p>{spot.location}</p>
           </div>
           <NewBookingForm spot={spot} />
+          <div className="reviews">
+            <h3>Reviews</h3>
+            <NewReview spot={spot} />
+          </div>
+          <div className="reviewList">
+            {spot?.SpotReviews?.map((review) => (
+              <div className="review" key={review?.id}>
+                <p>{review?.rating}</p>
+                <p>{review?.comment}</p>
+                {/* <p>{review?.user.firstName}</p> */}
+              </div>
+            ))}
+          </div>
           {sessionUser.id === spot?.userId && (
             <div className="ownerControls">
               <button>

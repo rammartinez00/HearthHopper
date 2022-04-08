@@ -56,6 +56,7 @@ router.get(
       include: [
         {
           model: db.Picture,
+          model: db.SpotReview,
         },
       ],
     });
