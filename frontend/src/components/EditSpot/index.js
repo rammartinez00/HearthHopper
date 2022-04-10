@@ -11,6 +11,7 @@ const config = {
   accessKeyId: process.env.accessKeyId,
   secretAccessKey: process.env.secretKey,
 };
+
 const EditSpotForm = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
@@ -127,7 +128,11 @@ const EditSpotForm = () => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         ></input>
-        <button type="submit" disabled={validationErrors.length > 0}>
+        <button
+          className={`button btn-gradient`}
+          type="submit"
+          disabled={validationErrors.length > 0}
+        >
           Post The Spot
         </button>
       </form>

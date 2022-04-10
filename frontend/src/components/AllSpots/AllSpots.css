@@ -1,31 +1,36 @@
 .spot {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 600px;
-    height: 200px;
-    background-color: #400d0d;
-    padding: 10px;
-    margin: 10px;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px #000000;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 600px;
+  height: 250px;
+  /* background-color: #000000; */
+  padding: 10px;
+  margin: 10px;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid rgb(254, 104, 44);
+  box-shadow: 0px 2px 10px #e332da;
+  padding: 20px;
 }
+
 .spot-image > img {
-    border-radius: 10px;
-    width:100px
+  border-radius: 10px;
+  width: 100px;
 }
+
 .spotContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-color: aqua; */
-    position: relative;
-    top:50px;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: aqua; */
+  position: relative;
+  top: 50px;
+  border-radius: 10px;
+  padding: 20px;
 }
 .spot-info {
-    padding: 20px;
+  padding: 20px;
 }

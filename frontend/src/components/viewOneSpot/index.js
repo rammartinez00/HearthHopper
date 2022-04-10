@@ -37,7 +37,7 @@ const SpotDetail = () => {
     <>
       {/* {isLoading === false ? ( */}
       <div className="spotCont">
-        <div id="images">
+        <div id="images" className="images">
           {spot.Pictures.map((pic) => (
             <img
               id={`image${pic.id}`}
@@ -58,11 +58,10 @@ const SpotDetail = () => {
           <h3>{spot.name}</h3>
           <p>{spot.description}</p>
           <p>${spot.price} per night</p>
-          <p>{spot.location}</p>
+          <p>Location: {spot.location}</p>
         </div>
-        {/* <NewBookingForm spot={spot} /> */}
+        <NewBookingForm spot={spot} />
         <div className="reviews">
-          <h3>Reviews</h3>
           <NewReview spot={spot} />
         </div>
         <div className="reviewList">
@@ -72,8 +71,9 @@ const SpotDetail = () => {
               <p>Comment: {review?.comment}</p>
               <p>{review?.User?.userName}</p>
               {sessionUser?.id === review?.userId ? (
-                <div>
+                <div className="reviewOwnerCont">
                   <button
+                    className={`button btn-gradient`}
                     onClick={async () => {
                       await dispatch(removeReview(review.id));
                       setHasDeleted(!hasDeleted);
@@ -88,12 +88,15 @@ const SpotDetail = () => {
             </div>
           ))}
         </div>
-        {sessionUser.id === spot?.userId && (
+        {sessionUser?.id === spot?.userId && (
           <div className="ownerControls">
-            <button>
-              <NavLink to={`/spots/${spot?.id}/edit`}>Edit</NavLink>
+            <button className={`button btn-gradient `}>
+              <NavLink className="navEdit" to={`/spots/${spot?.id}/edit`}>
+                Edit
+              </NavLink>
             </button>
             <button
+              className={`button btn-gradient`}
               onClick={() => {
                 dispatch(deleteOneSpot(spot?.id));
               }}

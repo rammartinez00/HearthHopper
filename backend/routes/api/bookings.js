@@ -78,4 +78,14 @@ router.delete(
   })
 );
 
+router.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const bookings = await db.SpotBooking.findAll({
+      include: [db.Spot, db.User],
+    });
+    res.json(bookings);
+  })
+);
+
 module.exports = router;

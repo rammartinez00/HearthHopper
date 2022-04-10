@@ -88,7 +88,11 @@ const ChangeReview = ({ review }) => {
           </select>
         </div>
         <div className="ReviewCont__form__submit">
-          <button disabled={validationErrors.length > 0} type="submit">
+          <button
+            className={`button btn-gradient`}
+            disabled={validationErrors.length > 0}
+            type="submit"
+          >
             Submit
           </button>
         </div>

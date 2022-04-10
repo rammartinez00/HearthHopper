@@ -10,6 +10,10 @@ import SpotBrowser from "./components/AllSpots";
 import { getSpots } from "./store/spots";
 import EditSpotForm from "./components/EditSpot";
 import SpotDetail from "./components/viewOneSpot";
+import LoadAllBookings from "./components/LoadBookings";
+
+import Footer from "./components/Footer";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,8 +45,12 @@ function App() {
           <Route exact path="/spots/:id">
             <SpotDetail />
           </Route>
+          <Route path="/bookings">
+            <LoadAllBookings />
+          </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

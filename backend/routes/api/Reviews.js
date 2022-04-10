@@ -28,12 +28,12 @@ router.patch(
   asyncHandler(async (req, res) => {
     const { comment, rating } = req.body;
     const review = await db.SpotReview.findByPk(+req.body.id);
-    console.log(review, "BEFORE");
+
     await review.update({
       rating,
       comment,
     });
-    console.log(review, "AFTER");
+    // console.log(review, "AFTER");/
     res.json(review);
   })
 );

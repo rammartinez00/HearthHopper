@@ -31,7 +31,7 @@ const SpotBrowser = () => {
             <p>${spot?.price} per night</p>
             <p>{spot?.location}</p>
           </div>
-          {sessionUser.id === spot?.userId && (
+          {/* {sessionUser?.id === spot?.userId && (
             <div>
               <button>
                 <NavLink to={`/spots/${spot?.id}/edit`}>Edit</NavLink>
@@ -40,7 +40,7 @@ const SpotBrowser = () => {
                 Delete
               </button>
             </div>
-          )}
+          )} */}
         </div>
       ))}
     </div>

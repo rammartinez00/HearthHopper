@@ -12,10 +12,8 @@ const NewBookingForm = ({ spot }) => {
   const history = useHistory();
 
   const { id } = useParams();
-  console.log(id);
 
   const today = new Date().toDateString();
-  console.log(today, "***********");
 
   const [startDate, setStartDate] = useState("2022-04-15");
   const [endDate, setEndDate] = useState("2022-04-15");
@@ -23,7 +21,6 @@ const NewBookingForm = ({ spot }) => {
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  console.log(startDate, endDate, "^^^^^^^^^^^^");
   const newPrice = parseInt(spot.price);
 
   const startArr = startDate.split("-");
@@ -66,8 +63,8 @@ const NewBookingForm = ({ spot }) => {
     if (endDate.length < 1) {
       errors.push("End Date is required");
     }
-    if (daysDiff < 0) {
-      errors.push("End Date must be after Start Date");
+    if (date1InMs > date2InMs) {
+      errors.push("Start Date must be before End Date");
     }
     setValidationErrors(errors);
   }, [startDate, endDate, daysDiff]);
@@ -95,6 +92,7 @@ const NewBookingForm = ({ spot }) => {
     history.push(`/spots/${id}`);
   };
 
+  if (!sessionUser) return null;
   return (
     <div className="bookingCont">
       <form onSubmit={handleSubmit}>
@@ -124,9 +122,11 @@ const NewBookingForm = ({ spot }) => {
             onChange={(e) => setEndDate(e.target.value)}
           />
         </div>
-        <button type="submit">Book Now</button>
+        <button className={`button btn-gradient`} type="submit">
+          Book Now
+        </button>
       </form>
-      <h2>Total Price$ {totalPrice}</h2>
+      {date2InMs > date1InMs && <h2>Total Price$ {totalPrice}</h2>}
     </div>
   );
 };

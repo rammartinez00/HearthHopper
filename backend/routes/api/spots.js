@@ -50,7 +50,7 @@ router.get(
     const spot = await db.Spot.findByPk(+req.params.id, {
       include: [db.Picture, db.SpotReview],
     });
-    console.log(spot);
+    // console.log(spot);
     return res.json(spot);
   })
 );

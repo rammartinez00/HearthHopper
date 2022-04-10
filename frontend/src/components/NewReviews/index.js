@@ -38,7 +38,7 @@ const NewReview = ({ spot }) => {
     const review = {
       comment,
       rating,
-      userId: sessionUser.id,
+      userId: sessionUser?.id,
       spotId: spot.id,
     };
 
@@ -52,7 +52,7 @@ const NewReview = ({ spot }) => {
 
     history.push(`/spots/${spot.id}`);
   };
-
+  if (!sessionUser) return null;
   return (
     <div className="ReviewCont">
       <form onSubmit={handleSubmit}>
@@ -64,7 +64,7 @@ const NewReview = ({ spot }) => {
         </ul>
         <div className="ReviewCont__form">
           <div className="ReviewCont__form__rating">
-            <label htmlFor="rating">Rating</label>
+            <label htmlFor="rating">Rating </label>
             <select
               name="rating"
               id="rating"
@@ -79,16 +79,19 @@ const NewReview = ({ spot }) => {
             </select>
           </div>
           <div className="ReviewCont__form__comment">
-            <label htmlFor="comment">Comment</label>
             <textarea
-              name="comment"
+              placeholder="Leave a review"
               id="comment"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
           </div>
           <div className="ReviewCont__form__submit">
-            <button type="submit" disabled={validationErrors.length > 0}>
+            <button
+              className={`button btn-gradient`}
+              type="submit"
+              disabled={validationErrors.length > 0}
+            >
               Post The Review
             </button>
           </div>

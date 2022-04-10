@@ -6,14 +6,19 @@ function EditReviewModal({ review }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <>
-      <button onClick={() => setShowModal(true)}>Edit Review</button>
+    <div className="editButton">
+      <button
+        className={`button btn-gradient`}
+        onClick={() => setShowModal(true)}
+      >
+        Edit Review
+      </button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ChangeReview review={review} />
         </Modal>
       )}
-    </>
+    </div>
   );
 }
 

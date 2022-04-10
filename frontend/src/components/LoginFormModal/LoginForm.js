@@ -49,6 +49,7 @@ function LoginForm() {
         Log In
       </button>
       <button
+        className={`button btn-gradient editButton`}
         onClick={() => {
           dispatch(
             sessionActions.login({

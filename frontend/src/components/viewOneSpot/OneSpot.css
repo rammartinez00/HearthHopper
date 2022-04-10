@@ -1,5 +1,7 @@
 body {
   text-align: center;
+  background-color: rgb(24, 24, 24);
+  color: white;
 }
 #images {
   width: 400px;
@@ -57,9 +59,11 @@ body {
   position: relative;
   top: 100px;
   border-radius: 10px;
-  border: 1px solid #c6e4f2;
-  height: 1000px;
+  border: 1px solid #ff611e;
+  box-shadow: 0px 2px 10px #cf319a;
+  height: auto;
   width: 100%;
+  margin-bottom: 150px;
 }
 .bookingCont {
   display: flex;
@@ -67,13 +71,76 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  border: 1px solid #c6e4f2;
-  background-color: green;
-  height: 400px;
-  width: 100%;
+  border: 1px solid #f46b2c;
+  /* background-color: rgb(255, 255, 255); */
+  color: rgb(255, 255, 255);
+  height: 300px;
+  width: 50%;
+  box-shadow: 0px 2px 10px #cf319a;
 }
 
 .review {
-  border: 1px solid #c6e4f2;
+  border: 1px solid #a6440f;
+  width: 400px;
+}
+.images {
+  box-shadow: 0px 0px 10px #ba315c;
+}
+
+.review {
+  box-shadow: 0px 0px 10px #ba315c;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 10px #ba315c;
+  border: 1px solid #a6440f;
+  /* background-color: white; */
+  color: rgb(255, 255, 255);
+  margin: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 40px;
+  width: 600px;
+}
+.ReviewCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  color: rgb(255, 255, 255);
+  margin: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px;
+}
+.ownerControls {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  padding: 20px;
+}
+
+.editButton {
+  margin-top: 10px;
+}
+
+.ownerControls > button {
+  margin: 10px;
+}
+
+.navEdit {
+  color: white;
+  text-decoration: none;
+}
+
+.spot-info {
   width: 400px;
 }

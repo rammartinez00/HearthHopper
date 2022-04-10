@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 const SET_BOOKING = "bookings/setBooking";
 const EDIT_BOOKING = "bookings/editBooking";
 const DELETE_BOOKING = "bookings/deleteBooking";
+const LOAD_ALL = "bookings/loadAll";
 
 const setBooking = (booking) => {
   return {
@@ -23,6 +24,20 @@ const deleteBooking = (id) => {
     type: DELETE_BOOKING,
     payload: id,
   };
+};
+
+const loadAllbookings = (bookings) => {
+  return {
+    type: LOAD_ALL,
+    payload: bookings,
+  };
+};
+
+export const getBookings = () => async (dispatch) => {
+  const response = await csrfFetch(`/api/bookings`);
+  const data = await response.json();
+  dispatch(loadAllbookings(data));
+  return response;
 };
 
 export const createBooking = (booking) => async (dispatch) => {
@@ -55,6 +70,8 @@ export const removeBooking = (id) => async (dispatch) => {
 
 const bookingReducer = (state = [], action) => {
   switch (action.type) {
+    case LOAD_ALL:
+      return action.payload;
     case SET_BOOKING:
       return [...state, action.payload];
     case EDIT_BOOKING:

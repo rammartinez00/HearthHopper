@@ -1,53 +1,71 @@
 .flexible {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #014034;
-    width: 20%;
-    height: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.75);
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #014034;
+  width: 20%;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.75);
 }
 
 .container {
-    padding:15px;
-    position: relative;
-    top: 200px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content:space-between;
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
+  padding: 15px;
+  position: relative;
+  top: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  overflow-y: none;
+  overflow-x: scroll;
+}
+.container::-webkit-scrollbar {
+  background-color: transparent;
+}
+.container::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(
+    to right,
+    #ff9f32,
+    #ff2d5e,
+    #ff3f10,
+    #ff199f
+  );
+  /* box-shadow: 2px 4px 8px 0 rgba(49, 196, 190, 0.75); */
+  margin: 10px;
+  border-radius: 10px;
 }
 
 .image1 {
-    position: relative;
-    top: 100px;
-    width: 80%;
-    height: 400px;
-    border-radius: 10px;
-    background-image: url(https://i.redd.it/ay0x7u7043r81.jpg);
-    background-position: 50% 50%;
-    box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.75);
-
+  position: relative;
+  top: 100px;
+  width: 80%;
+  height: 400px;
+  border-radius: 10px;
+  background-image: url(https://i.imgur.com/h0uAF0i.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.75);
 }
 .text {
-    position: relative;
-    top: 180px;
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255);
+  position: relative;
+  top: 180px;
+  border-radius: 10px;
+  /* background-color: rgb(255, 255, 255); */
 }
 
 .imageBtn {
-    position: relative;
-    border-radius: 5px;
-    background-position: 50% 50%;
-    box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.75);
+  position: relative;
+  border-radius: 5px;
+  background-position: 50% 50%;
+  box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.75);
+  width: 100px;
 }
 
-.imageBtn{
-    text-decoration: none;
+.flexButton {
+  text-decoration: none;
+  color: white;
 }
