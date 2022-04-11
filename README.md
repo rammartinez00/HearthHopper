@@ -5,7 +5,7 @@
 #Index
 
 - [Technologies Used](#Technologies-Used)
-- [Technologies](#technologies)
+- [Getting Started](#getting-started)
 - [Overview of application architecture](#overview-of-application-architecture)
 
 
@@ -54,7 +54,7 @@
 10. Log in as a Demo user, or create an account. 
   
   
-# Features 
+
   
   
 
