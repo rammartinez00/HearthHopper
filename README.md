@@ -7,7 +7,8 @@
 
 #Technologies Used
 
-![javascript](https://user-images.githubusercontent.com/40069890/162655226-337b6981-1dbd-4eda-95f4-b9f948e5e6fb.svg)
+![javascript](https://user-images.githubusercontent.com/40069890/162655568-1ad8a984-c652-4aac-817b-90b9a09bca15.png)
+
 
 
 
