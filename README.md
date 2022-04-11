@@ -7,6 +7,7 @@
 
 #Technologies Used
 
-![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/expressjs.svg)    ![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/git.svg)    ![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/heroku.svg)    ![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/javascript.svg)    ![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/nodejs.svg)    ![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/postgres.svg)    ![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/react.svg)    ![alt text](https://github.com/Workshape/tech-icons/blob/master/icons/expressjs.svg)
+![javascript](https://user-images.githubusercontent.com/40069890/162655226-337b6981-1dbd-4eda-95f4-b9f948e5e6fb.svg)
+
 
 
