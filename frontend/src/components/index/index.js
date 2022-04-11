@@ -23,13 +23,18 @@ const Home = () => {
 
   return (
     <>
+      <div>
+        <h4 className="blurb">
+          Hearth Hopper is your one stop for renting vacation spots
+        </h4>
+      </div>
       <div className="image1"></div>
       <button className={`button btn-gradient imageBtn`}>
         <NavLink className="flexButton" to="/spots">
           I'm Flexible
         </NavLink>
       </button>
-      <h2 className="text">Inspiration for your next trip</h2>
+      <h2 className="text">Check Out A Random Spot</h2>
       <div className="container">
         {ranArr.map((spot, i) => (
           <div className="spot" key={i}>

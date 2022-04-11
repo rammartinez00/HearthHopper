@@ -22,6 +22,11 @@ const SpotDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasDeleted, setHasDeleted] = useState(false);
 
+  const updated = {
+    hasDeleted,
+    setHasDeleted,
+  };
+
   const { id } = useParams();
   const spot = spots[id];
   const sessionUser = useSelector((state) => state.session.user);
@@ -82,7 +87,7 @@ const SpotDetail = () => {
                     Delete
                   </button>
 
-                  <EditReviewModal review={review} />
+                  <EditReviewModal review={review} updated={updated} />
                 </div>
               ) : null}
             </div>
@@ -99,6 +104,7 @@ const SpotDetail = () => {
               className={`button btn-gradient`}
               onClick={() => {
                 dispatch(deleteOneSpot(spot?.id));
+                history.push("/spots");
               }}
             >
               Delete

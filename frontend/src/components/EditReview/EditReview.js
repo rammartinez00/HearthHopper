@@ -4,7 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 // import { patch } from "../../../../backend/routes/api/spots";
 import { patchReview } from "../../store/reviews";
 import { getOneSpot } from "../../store/spots";
-const ChangeReview = ({ review }) => {
+const ChangeReview = ({ review, prop, updated }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
   const spots = useSelector((state) => state.spots);
@@ -46,7 +46,8 @@ const ChangeReview = ({ review }) => {
     let createdReview;
 
     createdReview = await dispatch(patchReview(editedReview));
-
+    prop.setShowModal(!prop.showModal);
+    updated.setHasDeleted(!updated.hasDeleted);
     setComment("");
     setRating("");
     setHasSubmitted(false);
@@ -65,14 +66,6 @@ const ChangeReview = ({ review }) => {
           ))}
         </ul>
         <div className="ReviewCont__form">
-          <label htmlFor="comment">
-            <textarea
-              id="comment"
-              name="comment"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-          </label>
           <label htmlFor="rating">Rating</label>
           <select
             name="rating"
@@ -86,12 +79,20 @@ const ChangeReview = ({ review }) => {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
+
+          <textarea
+            id="comment"
+            placeholder="Leave a review"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
         </div>
         <div className="ReviewCont__form__submit">
           <button
             className={`button btn-gradient`}
             disabled={validationErrors.length > 0}
             type="submit"
+            onSubmit={handleSubmit}
           >
             Submit
           </button>

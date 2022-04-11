@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import { getOneSpot } from "../../store/spots";
 
 import { createBooking } from "../../store/bookings";
 import S3FileUpload from "react-s3";
@@ -12,6 +13,42 @@ const NewBookingForm = ({ spot }) => {
   const history = useHistory();
 
   const { id } = useParams();
+
+  // console.log(spot.SpotBookings);
+
+  var getDaysArray = function (start, end) {
+    for (
+      var arr = [], dt = new Date(start);
+      dt <= new Date(end);
+      dt.setDate(dt.getDate() + 1)
+    ) {
+      arr.push(new Date(dt));
+    }
+    return arr;
+  };
+
+  for (let i = 0; i < spot.SpotBookings?.length; i++) {
+    const booking = spot.SpotBookings[i];
+    let startDate = booking.startDate;
+    let endDate = booking.endDate;
+    var bookedDays = getDaysArray(startDate, endDate);
+    // console.log(bookedDays);
+  }
+
+  const startDate1 = () => {
+    let now = new Date();
+    let month = now.getMonth() + 1;
+    if (month < 10) {
+      month = "0" + month.toString();
+    }
+    let day = now.getDate();
+    if (day < 10) {
+      day = "0" + day.toString();
+    }
+    let year = now.getFullYear();
+    let start = `${year}-${month}-${day}`;
+    return start;
+  };
 
   const today = new Date().toDateString();
 
@@ -33,10 +70,16 @@ const NewBookingForm = ({ spot }) => {
   const endMonth = endArr[1];
   const endDay = endArr[2];
 
-  const date1 = new Date(+startYear, +startMonth, +startDay);
+  const todayVal = new Date();
+  const todayInMs = todayVal.getTime();
+
+  const date1 = new Date(+startYear, +startMonth - 1, +startDay);
 
   // creating the date 2 with sample input date.
-  const date2 = new Date(+endYear, +endMonth, +endDay);
+  const date2 = new Date(+endYear, +endMonth - 1, +endDay);
+
+  // const newDays = getDaysArray(date1, date2);
+  // console.log(newDays);
 
   // getting milliseconds for both dates
   const date1InMs = date1.getTime();
@@ -66,8 +109,24 @@ const NewBookingForm = ({ spot }) => {
     if (date1InMs > date2InMs) {
       errors.push("Start Date must be before End Date");
     }
+
+    for (let i = 0; i < bookedDays?.length; i++) {
+      let bookedDay = bookedDays[i];
+
+      const valDate = bookedDay.getTime();
+
+      // console.log(date1InMs);
+      if (date1InMs === valDate) {
+        errors.push("This date is already booked");
+      }
+
+      if (date2InMs === valDate) {
+        errors.push("This date is already booked");
+      }
+    }
+
     setValidationErrors(errors);
-  }, [startDate, endDate, daysDiff]);
+  }, [startDate, endDate, newPrice]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -105,6 +164,7 @@ const NewBookingForm = ({ spot }) => {
         <div>
           <label htmlFor="startDate">Start Date</label>
           <input
+            min={startDate1()}
             type="date"
             name="startDate"
             id="startDate"
@@ -122,7 +182,11 @@ const NewBookingForm = ({ spot }) => {
             onChange={(e) => setEndDate(e.target.value)}
           />
         </div>
-        <button className={`button btn-gradient`} type="submit">
+        <button
+          disabled={validationErrors.length > 0}
+          className={`button btn-gradient`}
+          type="submit"
+        >
           Book Now
         </button>
       </form>

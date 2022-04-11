@@ -24,3 +24,7 @@
   flex-direction: column;
   justify-content: center;
 }
+.noBooking {
+  position: relative;
+  top: 200px;
+}

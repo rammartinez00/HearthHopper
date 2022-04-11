@@ -48,7 +48,7 @@ router.get(
   "/:id",
   asyncHandler(async (req, res) => {
     const spot = await db.Spot.findByPk(+req.params.id, {
-      include: [db.Picture, db.SpotReview],
+      include: [db.Picture, db.SpotReview, db.SpotBooking],
     });
     // console.log(spot);
     return res.json(spot);

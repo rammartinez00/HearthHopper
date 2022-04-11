@@ -95,6 +95,7 @@ body {
 }
 
 .reviews {
+  /* display: none; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -113,7 +114,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   list-style: none;
   color: rgb(255, 255, 255);
   margin: 20px;
@@ -143,4 +143,27 @@ body {
 
 .spot-info {
   width: 400px;
+}
+
+#modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(24, 24, 24);
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid rgb(255, 101, 49);
+  box-shadow: #cf319a 0px 0px 10px;
+  width: 450px;
+}
+.ReviewCont__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  color: rgb(255, 255, 255);
+  margin: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 300px;
 }

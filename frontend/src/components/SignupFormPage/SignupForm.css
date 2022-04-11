@@ -1,15 +1,15 @@
 .SignUp {
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 300px;
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 15px;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 300px;
+  padding: 10px;
+  background-color: rgb(24, 24, 24);
+  border-radius: 15px;
 }
 input {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   padding-left: 10px;
   width: 100%;
   height: 30px;
@@ -19,41 +19,47 @@ input {
 }
 
 .button {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   width: 100%;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  text-align:center;
+  text-align: center;
   border: none;
   background-size: 300% 100%;
   border-radius: 5px;
-  padding:5px;
-  -moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
+  padding: 5px;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .btn-gradient {
-  font-family: 'Roboto', sans-serif;
-  background-image: linear-gradient(to right, #ff9f32, #ff2d5e, #ff3f10, #ff199f);
+  font-family: "Roboto", sans-serif;
+  background-image: linear-gradient(
+    to right,
+    #ff9f32,
+    #ff2d5e,
+    #ff3f10,
+    #ff199f
+  );
   box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
   border: none;
 }
 
 .btn-gradient:hover {
-    font-family: 'Roboto', sans-serif;
-    background-position: 100% 0;
-    -moz-transition: all .4s ease-in-out;
-    -o-transition: all .4s ease-in-out;
-    -webkit-transition: all .4s ease-in-out;
-    transition: all .4s ease-in-out;
+  font-family: "Roboto", sans-serif;
+  background-position: 100% 0;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 * {
-    font-family: 'Roboto', sans-serif;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+  font-family: "Roboto", sans-serif;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
