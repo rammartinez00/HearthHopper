@@ -52,7 +52,7 @@ const NewReview = ({ spot }) => {
 
     history.push(`/spots/${spot.id}`);
   };
-  if (!sessionUser) return <h2>You Must Log In to post a Review</h2>;
+  if (!sessionUser) return <h2>You Must Log In to view Reviews</h2>;
   return (
     <div className="ReviewCont">
       <form onSubmit={handleSubmit}>
