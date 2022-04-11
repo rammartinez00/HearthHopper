@@ -57,10 +57,10 @@
 10. Log in as a Demo user, or create an account. 
   
   
-* [Features](https://github.com/rammartinez00/HearthHopper/wiki/Feature-List)
+[Features](https://github.com/rammartinez00/HearthHopper/wiki/Feature-List)
     
     
-* [Database Schema](https://github.com/rammartinez00/HearthHopper/wiki/Database-Schema)
+[Database Schema](https://github.com/rammartinez00/HearthHopper/wiki/Database-Schema)
   
 
 
