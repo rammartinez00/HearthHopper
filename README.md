@@ -2,7 +2,7 @@
 
 ### HearthHopper is a clone of Airbnb. [Live Site](https://hearthhopper.herokuapp.com/)
 
-https://i.gyazo.com/818d212a9598d61a266a01b8d26156b7.gif
+[![Image from Gyazo](https://i.gyazo.com/818d212a9598d61a266a01b8d26156b7.gif)](https://gyazo.com/818d212a9598d61a266a01b8d26156b7)
 
 ## Index
 
